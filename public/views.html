@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript" src="./canvasjs-2.3.1/canvasjs.min.js"></script>
+  <script type="text/javascript">
+      window.onload = function () {
+          var chart = new CanvasJS.Chart("chartContainer", {
+              data: [
+              {
+                  type: "column",
+                  dataPoints: [
+                  { x: $('<td>').text(item.department), y: $('<td>').text(item.owned_by) }
+                //   { x: 20, y: 15 },
+                //   { x: 30, y: 25 },
+                //   { x: 40, y: 30 },
+                //   { x: 50, y: 28 }
+                  ]
+              }
+              ]
+          });
+ 
+          chart.render();
+
+//   As a first step we need get data by making an AJAX call (we use jQuery) and then parse the same to convert the 
+// data into CanvasJS DataPoints – like {x: 5, y: 6}. Please refer to Working with Data for more information. 
+// Then pass the dataPoints to the chart and call chart.render().
+// var dataPoints = [];
+// $.getJSON("/api/Mismatched_CI", function(data) {  
+//     $.each(data, function(key, value){
+//         dataPoints.push({x: value[$('<td>').text(item.department)], y: parseInt(value[item.owned_by])});
+//     });
+//     chart = new CanvasJS.Chart("chartContainer2",{
+//         title:{
+//             text:"Live Chart with dataPoints from External JSON"
+//         },
+//         data: [{
+//         type: "line",
+//         dataPoints : dataPoints,
+//         }]
+//     });
+//     chart.render();
+//     updateChart();
+// });
+
+      }
+  </script>
+</head>
+ 
+<body>
+  <div id="chartContainer" style="height: 500px; width: 50%;"></div>
+  <div id="chartContainer2" style="height: 500px; width: 50%;"></div>
+</body>
+</html>

@@ -27,6 +27,7 @@
 
         <!-- js file -->
         <script src="assets/js/app.js"></script>
+        <script type="text/javascript" src="./canvasjs-2.3.1/canvasjs.min.js"></script>
 
     </head>
 
@@ -140,7 +141,9 @@
                                         <div class="footer">
                                             <div class="legend">
                                                 <i class="fa fa-circle text-info"></i> some info
-                                                <i class="fa fa-circle text-danger"></i> some info2
+                                                <a href="views.html">
+                                                <i class="fa fa-circle text-danger" id="stackedView"></i> View Data Graph
+                                            </a>
                                             </div>
                                             <hr>
                                         </div>
@@ -174,6 +177,7 @@
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title" id="ciList">Dashboard#2</h4>
+                                            <div id="graphView"></div>
                                             <p class="category">description</p>
                                         </div>
                                         <div class="content">

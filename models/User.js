@@ -48,19 +48,22 @@ module.exports = function (connection, Sequelize) {
       allowNull: false,
     }
     
-  }
+  },
+  {
+    timestamps: false
+}
   );
 
-// Associations to Recipe model
+// // Associations to Recipe model
 
-User.associate = function(models) {
-  User.hasMany(models.Cidata, {
-    foreignKey: 'id'
-  });
-  User.belongsTo(models.Department, {
-    foreignKey: 'department'
-  });
-};
+// User.associate = function(models) {
+//   User.hasMany(models.Cidata, {
+//     foreignKey: 'id'
+//   });
+//   User.belongsTo(models.Department, {
+//     foreignKey: 'department'
+//   });
+// };
 
   return User;
 }
