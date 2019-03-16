@@ -1024,7 +1024,7 @@ input:focus {
     float: right;
 
     /* main pannel width adjustment */
-    width: calc(100% - 210px);
+    width: calc(100% - 205px);
 
 }
 
@@ -4400,7 +4400,7 @@ fieldset[disabled] .btn-neutral.active {
 .upload-card{
     margin-top: 25px;
     margin-left: 25px;
-    /* adjust card with here */
+    /* adjust card width here */
     width: 97%;
 }
 
@@ -4417,6 +4417,9 @@ fieldset[disabled] .btn-neutral.active {
     width: 100%;
 }
 
+.dash2{
+    margin-left: 15px;
+}
  
 
 .card .image {
@@ -7529,11 +7532,11 @@ fieldset[disabled] .btn-neutral.active {
 
     }
 
-    .navbar-fixed-top {
+    /* .navbar-fixed-top {
 
         -webkit-backface-visibility: hidden;
 
-    }
+    } */
 
     #bodyClick {
 
