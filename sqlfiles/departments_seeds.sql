@@ -9,5 +9,3 @@ INSERT INTO Departments (department, createdAt, updatedAt) VALUES
 ('Digital Operations', NOW(), NOW()),
 ('DIG Engineering', NOW(), NOW()),
 ('Digital Quality', NOW(), NOW());
-
---adding
