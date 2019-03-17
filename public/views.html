@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<!-- also d3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap-min.js" type="text/javascript"></script>
+
+<!-- Bootstrap core CSS     -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Animation library for notifications   -->
+<link href="assets/css/animate.min.css" rel="stylesheet" />
+
+<!--  Light Bootstrap Table core CSS    -->
+<link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+
+<!--     Fonts and icons     -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<!-- <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" /> -->
+<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+
+
+<!-- d3 files -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+<body>
+
+	 <!-- color-->
+	 <div class="wrapper" >
+			<div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+					<div class="sidebar-wrapper">
+							<div class="logo">
+									<a href="#" class="simple-text">Dashboard Views</a>
+							</div>
+							<ul class="nav">
+									<li>
+											<a href="dashboard.html">
+													<i class="fa fa-list"></i>
+													<p>Dashboard</p>
+											</a>
+									</li>
+									<li class="active">
+											<a href="user.html">
+													<i class="fa fa-user"></i>
+													<p>User Profile</p>
+											</a>
+									</li>
+							</ul>
+					</div>
+			</div>
+		<nav class="navbar navbar-default navbar-fixed">
+				<div class="container-fluid">
+						<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse"
+										data-target="#navigation-example-2">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+								</button>
+								<!-- <a class="navbar-brand" href="#">User</a> -->
+						</div>
+						<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-left">
+										<li>
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+														<i class="fa fa-dashboard"></i>
+														<p class="hidden-lg hidden-md">Dashboard</p>
+												</a>
+										</li>
+										<li class="dropdown">
+												<a href="https://geit.service-now.com" target="_blank" title="Service Now" class="dropdown-toggle" data-toggle="dropdown">
+														<i class="fa fa-globe"></i>
+														<!-- <b class="caret hidden-sm hidden-xs"></b> -->
+														<!-- <span class="notification hidden-sm hidden-xs"></span> -->
+														<p class="hidden-lg hidden-md">
+																<!--  5 Notifications -->
+																<b class="caret"></b>
+														</p>
+												</a>
+										</li>
+										<li>
+												<a href="">
+														<i class="fa fa-search"></i>
+														<p class="hidden-lg hidden-md">Search</p>
+												</a>
+										</li>
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+										<li>
+												<a href=""></a>
+										</li>
+
+										<li>
+												<a href="/">
+														<p>Log out</p>
+												</a>
+										</li>
+										<li class="separator hidden-lg hidden-md"></li>
+								</ul>
+						</div>
+				</div>
+		</nav>
+
+		</body>
+
+
+<script>
+
+var margin = {top: 40, right: 20, bottom: 30, left: 250},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".%");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Frequency:</strong> <span style='color:red'>" + d.mode + "</span>";
+  })
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+
+$.get('/api/Mismatched_CI').then(function(results) {
+
+  var deptObj = [];
+
+  var deptTotal = 0;
+
+  var added = false;
+
+  for(var i = 0; i < results.length; i++){
+
+    if(added == true){
+
+      var counted = false;
+
+      for(var j = 0; j < deptObj.length; j++){
+ 
+        if(results[i].department == deptObj[j].department){
+
+          deptObj[j].mode = deptObj[j].mode + 1;
+
+          deptTotal++;
+
+          counted = true;
+          
+          console.log(results[i].department);
+        }
+
+      }
+
+      if(counted == false) {
+          
+          deptObj.push({department: results[i].department, mode: 1, frequency: 0});
+
+          deptTotal++;
+
+        }
+    
+
+    } else {
+
+      added = true;
+
+      deptObj.push({department: results[i].department, mode: 1, frequency: 0});
+
+      deptTotal++;
+    }
+
+  }
+
+  for(var k = 0; k < deptObj.length; k++){
+
+    deptObj[k].frequency = deptObj[k].mode/deptTotal;
+
+  }
+
+
+  console.log(deptObj);
+  console.log(deptTotal);
+
+
+  x.domain(deptObj.map(function(d) { return d.department; }));
+  
+  y.domain([0, d3.max(deptObj, function(d) { return d.mode; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
+
+  svg.selectAll(".bar")
+      .data(deptObj)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.department); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.mode); })
+      .attr("height", function(d) { return height - y(d.mode); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+		});
+// });
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+
+</script>

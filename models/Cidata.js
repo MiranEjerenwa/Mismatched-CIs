@@ -69,13 +69,13 @@ module.exports = function (connection, Sequelize) {
 }
   );
 
- // Associations to other models
- Cidata.associate = function(models) {
-  Cidata.belongsTo(models.User, {
-    foreignKey: 'id',
-    onDelete: 'cascade'
-  });
-}
+//  // Associations to other models
+//  Cidata.associate = function(models) {
+//   Cidata.belongsTo(models.User, {
+//     foreignKey: 'id',
+//     onDelete: 'cascade'
+//   });
+// }
   return Cidata;
 }
 
