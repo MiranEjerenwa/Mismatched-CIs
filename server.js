@@ -20,7 +20,7 @@ const helmet = require('helmet');
 const app = express();
 
 // defining port
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 //syncwith database
 const db = require('./models');
