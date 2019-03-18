@@ -98,16 +98,13 @@
                     </div>
                     <div class="wn-section__container wn-section__container--middle">
                         <div class="wn-article wn-article--wysiwyg">
-                            <p> Need to be able to log into app and manage CI data based on user credentials
-                                • Should be able to upload a CSV file containing CI, Owning and Billing Department data
-                                • Upon data import, filter out CI data that contains a match between Dept Owner and Dept
-                                Billed by querying DB by User/DeptID
+                            <p> Need to be able to log into app and manage CI data based on user credentials (email & password)
+                                • Should be able to upload a CSV file containing CI, CI Owner, Owning and Billing Department data
+                                • Upon data import, filter out CI data that does not have a match between CI department owner and department billed by, querying DB by user and department ID 
                                 • Display only missmatched CI data as a list on HTML dashboard
-                                • Display a graph of CI data by Department
+                                • Display a graph of missmatched CI data by Department
                                 • Add funtionality to notify / email the owner of mis-alinged CI data to correct in the
                                 CMDB
-                                • 
-                                •
                             </p>
                         </div>
                     </div>
@@ -130,8 +127,9 @@
                                 MySQL Database.
                                 Sequelize is being used as the interface between the two system (ORM).
                                 The application is deployed on a public cloud platform, Heroku, for the Production
-                                environment. User authorization and data access is achieved using JWT. ..something about
-                                Web
+                                environment. User authorization and data access is achieved using JWT. Application security is being
+                                addressed The middleare HelmetJS
+                                to secure web applications by setting various HTTP headers including content security policies, cross domain policy
                                 app secutiry (owasp)...... To meet new technology requirements,...
                             </p>
                         </div>
