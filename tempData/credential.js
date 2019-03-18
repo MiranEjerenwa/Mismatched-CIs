@@ -21,5 +21,11 @@ module.exports=[
         password:"peter",
         avatar: "https://api.adorable.io/avatars/144/1231m1io"
 
-      }
+    },
+    {
+        name:"nicastro.maryrose@company.com",
+        password:"nicastro",
+        avatar: "https://api.adorable.io/avatars/144/1231m1io"
+
+     } 
     ];
