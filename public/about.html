@@ -46,8 +46,8 @@
         <div class="collage">
             <div class="row centered">
                 <div class="d-flex justify-content-between">
-                    <div class="col-lg-2"> <a href="./assets/images/about/db-design.jpg"><img class="collage"
-                                src="./assets/images/about/db-design.jpg" height="300px" width="300px"
+                    <div class="col-lg-2"> <a href="./assets/images/about/CI Storyboard.jpg"><img class="collage"
+                                src="./assets/images/about/CI Storyboard.jpg" height="300px" width="300px"
                                 alt="data model image" id="imgstyle1"></a>
                     </div>
                     <div class="col-lg-2"> <a href="./assets/images/about/bash.JPG"><img class="collage"
@@ -58,8 +58,8 @@
                                 src="./assets/images/about/github.jpg" height="300px" width="300px" alt="github image"
                                 id="imgstyle1"></a>
                     </div>
-                    <div class="col-lg-2"> <a href="./assets/images/about/workbench.JPG"><img class="collage"
-                                src="./assets/images/about/workbench.JPG" height="300px" width="300px"
+                    <div class="col-lg-2"> <a href="./assets/images/about/db-design.jpg"><img class="collage"
+                                src="./assets/images/about/db-design.jpg" height="300px" width="300px"
                                 alt="workbench image" id="imgstyle2"></a>
                     </div>
                     <div class="col-lg-2"> <a href="./assets/images/about/heroku.png"> <img class="collage"
@@ -98,16 +98,13 @@
                     </div>
                     <div class="wn-section__container wn-section__container--middle">
                         <div class="wn-article wn-article--wysiwyg">
-                            <p> Need to be able to log into app and manage CI data based on user credentials
-                                • Should be able to upload a CSV file containing CI, Owning and Billing Department data
-                                • Upon data import, filter out CI data that contains a match between Dept Owner and Dept
-                                Billed by querying DB by User/DeptID
+                            <p> Need to be able to log into app and manage CI data based on user credentials (email & password)
+                                • Should be able to upload a CSV file containing CI, CI Owner, Owning and Billing Department data
+                                • Upon data import, filter out CI data that does not have a match between CI department owner and department billed by, querying DB by user and department ID 
                                 • Display only missmatched CI data as a list on HTML dashboard
+                                • Display a graph of missmatched CI data by Department
                                 • Add funtionality to notify / email the owner of mis-alinged CI data to correct in the
                                 CMDB
-                                •
-                                •
-                                •
                             </p>
                         </div>
                     </div>
@@ -126,13 +123,12 @@
                     <div class="wn-section__container wn-section__container--middle">
                         <div class="wn-article wn-article--wysiwyg">
                             <p> Mismatched CI Dashboard is a web application using a Node and Express Web Server, backed
-                                by a
-                                MySQL Database.
-                                Sequelize is being used as the interface between the two system (ORM).
+                                by a MySQL Database.  Sequelize is being used as the interface between the two system (ORM).
                                 The application is deployed on a public cloud platform, Heroku, for the Production
-                                environment. User authorization and data access is achieved using JWT. ..something about
-                                Web
-                                app secutiry (owasp)...... To meet new technology requirements,...
+                                environment. User authorization and data access is achieved using JWT. The middleware, HelmetJS, has been implemented to
+                                add application security by setting secure HTTP headers and secure content policies, amongst others.
+                                To meet new technology requirements, D3 (JavaScript library) is being used to produce dynamic, 
+                                interactive data visualizations.  Custom NPM "scripts" can be found in Package.js.
                             </p>
                         </div>
                     </div>
