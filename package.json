@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/MiranEjerenwa/Mismatched-CIs.git"
   },
-  "author": "",
+  "author": "Mismatch CI Developers",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MiranEjerenwa/Mismatched-CIs/issues"
@@ -35,5 +35,6 @@
     "path": "^0.12.7",
     "request": "^2.88.0",
     "sequelize": "^4.43.0"
-  }
+  },
+  "devDependencies": {}
 }
