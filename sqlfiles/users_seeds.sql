@@ -2,7 +2,7 @@
 -- if necessary, and execute the Insert statements to populate seed data. 
 -- Load order is department_seeds, users_seeds, Cidata_seeds
 USE mismatchedci_dev_db;
-INSERT INTO Users (id, fname, lname, email, password, department, Role, createdAt, updatedAt) VALUES
+INSERT INTO Users (id, fname, lname, email, password, department, Role) VALUES
 (1, 'Brewington','Michelle', 'michelle.brewington@company.com', 'michelle', 'Digital Risk Staff', 'manager'),
 (2, 'Ejerenwa','Mirian', 'mirian.ejerenwa@company.com', 'mirian', 'Digital Technology', 'manager'),
 (3, 'Miotti','Steve', 'steve.miotti@company.com', 'steve', 'Digital Operations', 'user'),
