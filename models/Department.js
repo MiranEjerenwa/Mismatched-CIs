@@ -9,6 +9,9 @@ department: {
         notEmpty: true
       }
 }
+},
+{
+  timestamps: false
 });
   return Department;
 }

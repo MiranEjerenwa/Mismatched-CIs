@@ -36,4 +36,16 @@ $(function () {
 	}
 	getItems();
 	/* ******************************************* */
-	});
+    });
+	
+	$.post('/api/user', function(data) {
+		$("#userPost").on("click", function(evt){
+			evt.preventDefault();    
+			$.ajax({
+			  method: "POST",
+			  url: "/api/user",
+				});
+			},
+		console.log(data)
+		)
+	})
