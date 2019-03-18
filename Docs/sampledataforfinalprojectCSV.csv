@@ -11,8 +11,8 @@ config_item_id,ci_name,install_status,model_id_classification,company,department
 4480872302,w0mek6u7zxcvsm,Installed,Server,GE Digital,Digital Technology,"Abogi, Peter(866970851)",GE Digital,DIG Engineering,peter.abogi@company.com
 1890156091,h92p6dg3hwg55c,Installed,Server,GE Digital,Digital Technology,"Abogi, Peter(866970851)",GE Digital,Digital Technology,peter.abogi@company.com
 5465644792,vxbrghre0xvvbp,Installed,Server,GE Digital,Digital Technology,"Abogi, Peter(866970851)",GE Digital,DIG Engineering,peter.abogi@company.com
-5068425212,me432h98wb2l5v,Installed,Server,GE Digital,Digital Risk Staff,Alita Lovato(323142546),GE Digital,Digital Quality,alita.lovato@company.com
-2303212440,37aqio1jtw4jn6,Installed,Server,GE Digital,Digital Risk Staff,Alita Lovato(323142546),GE Digital,Digital Quality,alita.lovato@company.com
+5068425212,me432h98wb2l5v,Installed,Server,GE Digital,Digital Risk Staff,"Alita, Lovato(323142546)",GE Digital,Digital Quality,alita.lovato@company.com
+2303212440,37aqio1jtw4jn6,Installed,Server,GE Digital,Digital Risk Staff,"Alita, Lovato(323142546)",GE Digital,Digital Quality,alita.lovato@company.com
 9252766292,9l20nauepfm0q2,Installed,Server,GE Digital,Digital Risk Staff,"Brewington, Michelle(170085587)",GE Digital,Digital Risk Staff,michelle.brewington@company.com
 6449968796,6mkkb65ijanpax,Installed,Server,GE Digital,Digital Risk Staff,"Brewington, Michelle(170085587)",GE Digital,Digital Risk Staff,michelle.brewington@company.com
 8754568822,jcyndlaj80hls2,Installed,Server,GE Digital,Digital Risk Staff,"Brewington, Michelle(170085587)",GE Digital,Digital Risk Staff,michelle.brewington@company.com
@@ -41,7 +41,7 @@ config_item_id,ci_name,install_status,model_id_classification,company,department
 5118849965,270zq4ug8mhc6u,Installed,Server,GE Digital,Digital Support,"Hollowell, Leila(786378182)",GE Digital,Digital Risk Staff,leila.hollowell@company.com
 3098782333,wa09f0y1rhba02,Installed,Server,GE Digital,Digital Support,"Hollowell, Leila(786378182)",GE Digital,Digital Risk Staff,leila.hollowell@company.com
 5053911720,o5zg5nxh5rhggs,Installed,Server,GE Digital,Digital Support,"Hollowell, Leila(786378182)",GE Digital,Digital Risk Staff,leila.hollowell@company.com
-3143945354,3onddt2prt61st,Installed,Server,GE Digital,Digital Technology,Maryrose Nicastro(174805124),GE Digital,Digital Technology,nicastro.maryrose@company.com
+3143945354,3onddt2prt61st,Installed,Server,GE Digital,Digital Technology,"Maryrose, Nicastro(174805124)",GE Digital,Digital Technology,nicastro.maryrose@company.com
 3418196034,tds6m0wcbiz1lo,Installed,Server,GE Digital,Digital Risk Staff,"Miotti, Steve(465884178)",GE Digital,DIG Engineering,steve.miotti@company.com
 8203345319,495cb17d6jy8st,Installed,Server,GE Digital,Digital Quality,"Miotti, Steve(465884178)",GE Digital,DIG Engineering,steve.miotti@company.com
 4413909928,9ry0guvbb4u2b9,Installed,Server,GE Digital,Digital Quality,"Miotti, Steve(465884178)",GE Digital,DIG Engineering,steve.miotti@company.com

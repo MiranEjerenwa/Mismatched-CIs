@@ -5,8 +5,8 @@ module.exports=[
       avatar: "https://api.adorable.io/avatars/144/ronnie"
       },
     {
-      name:"nicastro.maryrose@company.com",
-      password:"nicastro",
+      name:"michelle.brewington@company.com",
+      password:"michelle",
       avatar: "https://api.adorable.io/avatars/144/1p2io3j012j3e2112"
 
     },
@@ -17,9 +17,15 @@ module.exports=[
 
     },
     {
-        name:"Mike",
-        password:"4",
+        name:"peter.abogi@company.com",
+        password:"peter",
         avatar: "https://api.adorable.io/avatars/144/1231m1io"
 
-      }
+    },
+    {
+        name:"nicastro.maryrose@company.com",
+        password:"nicastro",
+        avatar: "https://api.adorable.io/avatars/144/1231m1io"
+
+     } 
     ];

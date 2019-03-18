@@ -5,13 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "updates": "npm-check -u",
+    "clean": "rm -rf node_modules"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MiranEjerenwa/Mismatched-CIs.git"
   },
-  "author": "",
+  "author": "Mismatch CI Developers",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MiranEjerenwa/Mismatched-CIs/issues"
@@ -33,5 +36,6 @@
     "path": "^0.12.7",
     "request": "^2.88.0",
     "sequelize": "^4.43.0"
-  }
+  },
+  "devDependencies": {}
 }
