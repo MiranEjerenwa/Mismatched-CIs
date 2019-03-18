@@ -11,7 +11,7 @@ module.exports=[
 
     },
     {
-        name:"mirian.ejerenwa@ge.com",
+        name:"mirian.ejerenwa@company.com",
         password:"mirian",
         avatar: "https://media.licdn.com/dms/image/C5103AQGKF1ca0Acilw/profile-displayphoto-shrink_200_200/0?e=1554336000&v=beta&t=7Kqeg6iy5kQXcbgShvrx7ruD7bH0DBh4J9CV0WQFfPQ"
 
