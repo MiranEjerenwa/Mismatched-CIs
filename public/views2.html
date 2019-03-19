@@ -204,90 +204,94 @@ svg.call(tip);
 
 $.get('/api/Mismatched_CI').then(function(results) {
 
-var userObj =[];
+  var deptObj = [];
 
-// var userObj = [];
+  var deptTotal = 0;
 
-var deptTotal = 0;
+  var added = false;
 
-var added = false;
+  for(var i = 0; i < results.length; i++){
 
-for(var i = 0; i < results.length; i++){
+    if(added == true){
 
-if(added == true){
+      var counted = false;
 
-  var counted = false;
+      for(var j = 0; j < deptObj.length; j++){
+ 
+        if(results[i].department == deptObj[j].department){
 
-  for(var j = 0; j < userObj.length; j++){
+          deptObj[j].mode = deptObj[j].mode + 1;
 
-    if(results[i].owned_by == userObj[j].owned_by){
+          deptTotal++;
 
-      userObj[j].mode = userObj[j].mode + 1;
+          counted = true;
+          
+          console.log(results[i].department);
+        }
+
+      }
+
+      if(counted == false) {
+          
+          deptObj.push({department: results[i].department, mode: 1, frequency: 0});
+
+          deptTotal++;
+
+        }
+    
+
+    } else {
+
+      added = true;
+
+      deptObj.push({department: results[i].department, mode: 1, frequency: 0});
 
       deptTotal++;
-
-      counted = true;
-      
-      console.log(results[i].owned_by);
     }
 
   }
 
-  if(counted == false) {
-      
-      userObj.push({owned_by: results[i].owned_by, mode: 1, frequency: 0});
+  for(var k = 0; k < deptObj.length; k++){
 
-      deptTotal++;
+    deptObj[k].frequency = deptObj[k].mode/deptTotal;
 
-    }
+  }
 
 
-} else {
-
-  added = true;
-
-  userObj.push({owned_by: results[i].owned_by, mode: 1, frequency: 0});
-
-  deptTotal++;
-}
-
-}
+  console.log(deptObj);
+  console.log(deptTotal);
 
 
-console.log(userObj);
-console.log(deptTotal);
+  x.domain(deptObj.map(function(d) { return d.department; }));
+  
+  y.domain([0, d3.max(deptObj, function(d) { return d.mode; })]);
 
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-x.domain(userObj.map(function(d) { return d.owned_by; }));
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
 
-y.domain([0, d3.max(userObj, function(d) { return d.mode; })]);
-
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-  .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Frequency");
-
-svg.selectAll(".bar")
-    .data(userObj)
-  .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", function(d) { return x(d.owned_by); })
-    .attr("width", x.rangeBand())
-    .attr("y", function(d) { return y(d.mode); })
-    .attr("height", function(d) { return height - y(d.mode); })
-    .on('mouseover', tip.show)
-    .on('mouseout', tip.hide)
-      });
+  svg.selectAll(".bar")
+      .data(deptObj)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.department); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.mode); })
+      .attr("height", function(d) { return height - y(d.mode); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+		});
 // });
 
 function type(d) {
