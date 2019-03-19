@@ -45,12 +45,25 @@ app.post('/api/login', function(req,res) {
 
   // GET route for seeing all users
   app.get('/api/user', function(req, res) {
-    db.user.create(req.body).then(function(dbuser) {
+    db.User.findAll(req.body).then(function(dbuser) {
       res.json(dbuser);
     }).catch(function(error) {
       res.json({ error: error });
     });
   });
+
+
+  // app.get('/api/user', function (req, res) {
+  //   db.users.findAll({}).then(function (rows) {
+  //     // sending back to the user data to the front end
+  //     res.json(rows);
+  //     console.log(req.method + " request");
+  //     console.log(JSON.stringify(rows))
+  //   }).catch(function (error) {
+  //     res.json({ error: error });
+  //   });
+  // });
+
   
 // // Popping in the middle ware
 // app.use(function(req, res, next){
