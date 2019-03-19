@@ -389,15 +389,101 @@
 
                             // mydata
 
+                            $.get('/api/Mismatched_CI').then(function(results) {
 
+var deptObj = [];
+
+var deptTotal = 0;
+
+var added = false;
+
+for(var i = 0; i < results.length; i++){
+
+  if(added == true){
+
+    var counted = false;
+
+    for(var j = 0; j < deptObj.length; j++){
+
+      if(results[i].department == deptObj[j].department){
+
+        deptObj[j].mode = deptObj[j].mode + 1;
+
+        deptTotal++;
+
+        counted = true;
+        
+        console.log(results[i].department);
+      }
+
+    }
+
+    if(counted == false) {
+        
+        deptObj.push({department: results[i].department, mode: 1, frequency: 0});
+
+        deptTotal++;
+
+      }
+  
+
+  } else {
+
+    added = true;
+
+    deptObj.push({department: results[i].department, mode: 1, frequency: 0});
+
+    deptTotal++;
+  }
+
+}
+
+for(var k = 0; k < deptObj.length; k++){
+
+  deptObj[k].frequency = deptObj[k].mode/deptTotal;
+
+}
+
+
+console.log(deptObj);
+console.log(deptTotal);
+
+
+// x.domain(deptObj.map(function(d) { return d.department; }));
+
+// y.domain([0, d3.max(deptObj, function(d) { return d.mode; })]);
+
+// svg.append("g")
+//     .attr("class", "x axis")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(xAxis);
+
+// svg.append("g")
+//     .attr("class", "y axis")
+//     .call(yAxis)
+//   .append("text")
+//     .attr("transform", "rotate(-90)")
+//     .attr("y", 6)
+//     .attr("dy", ".71em")
+//     .style("text-anchor", "end")
+//     .text("Frequency");
+
+// svg.selectAll(".bar")
+//     .data(deptObj)
+//   .enter().append("rect")
+//     .attr("class", "bar")
+//     .attr("x", function(d) { return x(d.department); })
+//     .attr("width", x.rangeBand())
+//     .attr("y", function(d) { return y(d.mode); })
+//     .attr("height", function(d) { return height - y(d.mode); })
+//     .on('mouseover', tip.show)
+//     .on('mouseout', tip.hide)
+      });
         
                             
                             dashboard('#dashboard',freqData);
 
-
-
-                            
-                            </script>
+       </script>
 
 
   
