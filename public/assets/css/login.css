@@ -38,3 +38,13 @@ footer{
 nav {
     background-color: #38577C;
 }
+
+  
+/* Sized for screens up to 450 pxels. */
+@media screen and (max-width: 550px) {
+.display-4{
+    font-size: 1.75rem;
+}
+}
+  
+  

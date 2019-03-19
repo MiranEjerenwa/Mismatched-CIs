@@ -1,4 +1,4 @@
 module.exports = {
-    'secret': 'a new secret phrase'
+    'secret': 'the rain in spain'
   }
   

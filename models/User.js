@@ -54,7 +54,7 @@ module.exports = function (connection, Sequelize) {
 }
   );
 
-// // Associations to Recipe model
+// // Associations to Cidata model
 
 // User.associate = function(models) {
 //   User.hasMany(models.Cidata, {
