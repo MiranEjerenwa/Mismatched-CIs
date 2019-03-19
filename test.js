@@ -20,11 +20,11 @@ describe('GET /api/user', function () {
 
   it('should find all users', function (done) {
     // Add some users to the db to test with
-    db.Users.bulkCreate([
-      { id: 1, fname: 'Michelle', lname: 'Brewington', email: 'michelle.brewington@company.com', password: 'michelle', department: 'Digital Risk Staff', role:'manager' },
-      { id: 2, fname: 'Steve', lname: 'Miotti', email: 'michelle.brewington@company.com', password: 'steve', department: 'Digital Operations', role:'user' },
-      { id: 3, fname: 'Mirian', lname: 'Ejerenwa', email: 'mirian.ejerenwa@company.com', password: 'mirian', department: 'Digital Technology', role:'manager' },
-      { id: 4, fname: 'Peter', lname: 'Abogi', email: 'peter.abogi@company.com', password: 'peter', department: 'Digital Operations', role:'user' }
+    db.User.bulkCreate([
+      { id: 1, fname: 'Michelle', lname: 'Brewington', email: 'michelle.brewington@company.com', password: 'michelle', department: 'Digital Risk Staff', Role:'manager' },
+      { id: 2, fname: 'Steve', lname: 'Miotti', email: 'michelle.brewington@company.com', password: 'steve', department: 'Digital Operations', Role:'user' },
+      { id: 3, fname: 'Mirian', lname: 'Ejerenwa', email: 'mirian.ejerenwa@company.com', password: 'mirian', department: 'Digital Technology', Role:'manager' },
+      { id: 4, fname: 'Peter', lname: 'Abogi', email: 'peter.abogi@company.com', password: 'peter', department: 'Digital Operations', Role:'user' }
 
 
     ]).then(function () {
@@ -32,7 +32,7 @@ describe('GET /api/user', function () {
       request.get('/api/user').end(function (err, res) {
         let responseStatus = res.status;
         let responseBody = res.body;
-
+        // console.log(responseBody);
         // Run assertions on the response
         expect(err).to.be.null;
 
@@ -41,21 +41,21 @@ describe('GET /api/user', function () {
         expect(responseBody).to.not.be.null;
 
         expect(responseBody)
-          .to.be.an('array')
+          .to.be.an('Array') // changed from array to object
           .that.has.lengthOf(4);
 
         expect(responseBody[0])
           .to.be.an('object')
-          .that.includes({ id: 1, fname: 'Michelle', lname: 'Brewington', email: 'michelle.brewington@company.com', password: 'michelle', department: 'Digital Risk Staff', role:'manager' });
+          .that.includes({ id: 1, fname: 'Michelle', lname: 'Brewington', email: 'michelle.brewington@company.com', password: 'michelle', department: 'Digital Risk Staff', Role:'manager' });
 
         expect(responseBody[1])
           .to.be.an('object')
-          .that.includes( { id: 2, fname: 'Steve', lname: 'Miotti', email: 'michelle.brewington@company.com', password: 'steve', department: 'Digital Operations', role:'user' });
+          .that.includes( { id: 2, fname: 'Steve', lname: 'Miotti', email: 'michelle.brewington@company.com', password: 'steve', department: 'Digital Operations', Role:'user' });
 
         for (let i = 0; i < responseBody.length; i++) {
           expect(responseBody[i])
           .to.be.an('object')
-          .that.does.not.includes({ id: 8, fname: 'Joe', lname: 'Connor', email: 'joe.connor@company.com', password: 'joe', department: 'Digital Operations', role:'user' });
+          .that.does.not.includes({ id: 8, fname: 'Joe', lname: 'Connor', email: 'joe.connor@company.com', password: 'joe', department: 'Digital Operations', Role:'user' });
         }  
        
         // The `done` function is used to end any asynchronous tests
@@ -68,13 +68,13 @@ describe('GET /api/user', function () {
 
 
 
-// describe('POST /api/products', function () {
+// describe('POST /api/user', function () {
 //   beforeEach(function () {
 //     request = chai.request(server);
 //     return db.sequelize.sync({ force: true });
 //   });
 
-//   it('should save a new product', function (done) {
+//   it('should save a new user', function (done) {
 //     var reqBody = {
 //       product_name: "Couch",
 //       department_name: "Furniture",

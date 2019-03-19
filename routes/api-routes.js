@@ -45,7 +45,7 @@ app.post('/api/login', function(req,res) {
 
   // GET route for seeing all users
   app.get('/api/user', function(req, res) {
-    db.user.create(req.body).then(function(dbuser) {
+    db.User.findAll(req.body).then(function(dbuser) {
       res.json(dbuser);
     }).catch(function(error) {
       res.json({ error: error });
