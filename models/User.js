@@ -8,7 +8,7 @@ module.exports = function (connection, Sequelize) {
       autoIncrement: true
     },
 
-    fname: {
+     fname:{
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
