@@ -36,7 +36,7 @@ app.post('/api/login', function(req,res) {
 
       // POST route for saving a new user
   app.post('/api/user', function(req, res) {
-    db.user.create(req.body).then(function(dbuser) {
+    db.User.create(req.body).then(function(dbuser) {
       res.json(dbuser);
     }).catch(function(error) {
       res.json({ error: error });
