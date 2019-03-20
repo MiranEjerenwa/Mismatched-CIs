@@ -32,7 +32,7 @@ $(function () {
 				// $('<td>').text(item.email)
 			);
 			return tr;
-	
 	}
 	getItems();
 });
+
