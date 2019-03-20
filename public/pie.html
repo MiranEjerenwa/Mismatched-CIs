@@ -367,9 +367,9 @@
                             
                                     return leg;
                                 }
-                                
+                              
                                 // calculate total frequency by segment for all department.
-                                var tF = ['steve','mirian','sai'].map(function(d){ 
+                                var tF = ['Nicastro','Paul','Hen', 'Jane', 'Leila', 'Michelle', 'Lovato', 'Wonderland', 'Peter', 'Mirian', 'Mini'].map(function(d){ 
                                     return {department:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
                                 });    
                                 
@@ -394,9 +394,7 @@
                                 organizer[row.department] = {
                                     department: row.department,
                                     freq: {
-                                        "John": 0,
                                         "Mini": 0,
-                                        "Jane": 0,
                                         "Peter": 0,
                                         "Mirian": 0,
                                         "Wonderland": 0,
