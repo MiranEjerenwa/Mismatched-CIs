@@ -64,7 +64,12 @@
          <!--   Core JS Files   -->
         <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
         <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    
+
+        <!-- d3 files -->
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        
+
         <!-- js file -->
         <script src="assets/js/app.js"></script>
         <script type="text/javascript" src="./canvasjs-2.3.1/canvasjs.min.js"></script>
@@ -174,23 +179,28 @@
 
                 <div id='dashboard' style="margin-left: 40px;">
                     </div>
-                    <script src="http://d3js.org/d3.v3.min.js"></script>
+                    
             
                     <!-- the script that preps the pie chart -->
 
                     <script>
                             function dashboard(id, fData){
                                 var barColor = 'steelblue';
-                                function segColor(c){ return {Mini:"#807dba", jane:"#e08214",john:"#41ab5d"}[c]; }
-                                
+                                function segColor(c){ return {
+                                    Mini:"#807dba", Peter:"#e08214",Mirian:"#41ab5d",
+                                    Wonderland:"#807cfa", Lovato:"#90EE90",Michelle:"#41ab5d",
+                                    Leila:"#3CB371", Jane:"#8e5ea2", Hen:"#3cba9f",John:"#e8c3b9",
+                                    Paul:"#3e95cd", Nicastro:"#8FAABB",Steve:"#1BCDD1", Pearl:"#c45850"
+                            }[c]; }
+                         
                                 // compute total for each department.
                                 fData.forEach(function(d){
-                                    d.total = d.freq.Mini + d.freq.Jane + d.freq.John
-                                    + d.freq.Peter + d.freq.Mirian + d.freq.Wonderland + d.freq.Lovato
-                                    + d.freq.Michelle + d.freq.Leila + d.freq.Hen + d.freq.Paul + d.freq.Nicastro
+                                    d.total = d.freq.Mini + d.freq.Peter + d.freq.Mirian
+                                    + d.freq.Wonderland + d.freq.Lovato + d.freq.Michelle + d.freq.Leila
+                                    + d.freq.Jane + d.freq.Hen + d.freq.John + d.freq.Paul 
+                                    + d.freq.Nicastro + d.freq.Steve + d.freq.Pearl
                                     ;});
-
-
+                                    
                                 // function to handle histogram.
                                 function histoGram(fD){
                                     var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
@@ -229,7 +239,7 @@
                                         .attr('fill',barColor)
                                         .on("mouseover",mouseover)// mouseover is defined below.
                                         .on("mouseout",mouseout);// mouseout is defined below.
-                                        
+
                                     //Create the frequency labels above the rectangles.
                                     bars.append("text").text(function(d){ return d3.format(",")(d[1])})
                                         .attr("x", function(d) { return x(d[0])+x.rangeBand()/2; })
@@ -369,7 +379,22 @@
                                 }
                               
                                 // calculate total frequency by segment for all department.
-                                var tF = ['Nicastro','Paul','Hen', 'Jane', 'Leila', 'Michelle', 'Lovato', 'Wonderland', 'Peter', 'Mirian', 'Mini'].map(function(d){ 
+                                var tF = [
+                                    'Mini',
+                                        'Peter',
+                                        'Mirian',
+                                        'Wonderland',
+                                        'Lovato',
+                                        'Michelle',
+                                        'Leila',
+                                        'Jane',
+                                        'Hen',
+                                        'John',
+                                        'Paul',
+                                        'Nicastro',
+                                        'Steve',
+                                        'Pearl'
+                            ].map(function(d){ 
                                     return {department:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
                                 });    
                                 
@@ -405,7 +430,9 @@
                                         "Hen": 0,
                                         "John": 0,
                                         "Paul": 0,
-                                        "Nicastro": 0
+                                        "Nicastro": 0,
+                                        "Steve": 0,
+                                        "Pearl": 0
                                     }
                                 };
                                 
