@@ -33,9 +33,9 @@ module.exports = function (connection, Sequelize) {
     password: {
       type: Sequelize.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true
-      }
+      // validate: {
+      //   notEmpty: true
+      // }
     },
 
     department: {
