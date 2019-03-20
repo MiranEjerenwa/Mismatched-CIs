@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = function (app) {
-
     //HTML get requests
     app.get('/', function (req, res) {
         console.log("in home route")

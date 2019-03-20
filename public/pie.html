@@ -62,11 +62,10 @@
         <link rel="icon" type="image/png" href="assets/img/favicon.ico">
 
          <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     
         <!-- js file -->
-
         <script src="assets/js/app.js"></script>
         <script type="text/javascript" src="./canvasjs-2.3.1/canvasjs.min.js"></script>
 
@@ -383,49 +382,49 @@
                             }
                             </script>
 
-                            
-<script>
+                    <!-- script that makes an API call to the DB and pulls the data and sorts by user and Dept -->
+                    <script>
 
-    $.get('/api/Mismatched_CI').then(function(results) {
-        var freqData = [];
-        var organizer = {};
+                    $.get('/api/Mismatched_CI').then(function(results) {
+                        var freqData = [];
+                        var organizer = {};
 
-        results.forEach(function(row) {
-            if(!organizer[row.department]) {
-                organizer[row.department] = {
-                    department: row.department,
-                    freq: {
-                        "John": 0,
-                        "Mini": 0,
-                        "Jane": 0,
-                        "Peter": 0,
-                        "Mirian": 0,
-                        "Wonderland": 0,
-                        "Lovato": 0,
-                        "Michelle": 0,
-                        "Leila": 0,
-                        "Jane": 0,
-                        "Hen": 0,
-                        "John": 0,
-                        "Paul": 0,
-                        "Nicastro": 0
-                    }
-                };
-                
-                organizer[row.department].freq[row.owned_by] += 1;
-            } else {
-                organizer[row.department].freq[row.owned_by] += 1;
-            }
-        });
+                        results.forEach(function(row) {
+                            if(!organizer[row.department]) {
+                                organizer[row.department] = {
+                                    department: row.department,
+                                    freq: {
+                                        "John": 0,
+                                        "Mini": 0,
+                                        "Jane": 0,
+                                        "Peter": 0,
+                                        "Mirian": 0,
+                                        "Wonderland": 0,
+                                        "Lovato": 0,
+                                        "Michelle": 0,
+                                        "Leila": 0,
+                                        "Jane": 0,
+                                        "Hen": 0,
+                                        "John": 0,
+                                        "Paul": 0,
+                                        "Nicastro": 0
+                                    }
+                                };
+                                
+                                organizer[row.department].freq[row.owned_by] += 1;
+                            } else {
+                                organizer[row.department].freq[row.owned_by] += 1;
+                            }
+                        });
 
-        Object.keys(organizer).forEach(function(dept) {
-            freqData.push(organizer[dept]);
-        });
-        
-        dashboard('#dashboard',freqData);
-    });                            
-
-</script>
+                        Object.keys(organizer).forEach(function(dept) {
+                            freqData.push(organizer[dept]);
+                        });
+                        
+                        dashboard('#dashboard',freqData);
+                    });                            
+                    
+                    </script>
 
 
   

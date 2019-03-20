@@ -1,6 +1,5 @@
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
-//
 // ******************************************************************************
 // *** Dependencies ***
 
@@ -89,7 +88,6 @@ app.get('/', function(req,res){
     res.sendFile(path.join(__dirname, "/../public/.html" ))
 })
 
- 
 //Starting server on the predefined Port
 app.listen(PORT, function () {
     console.log(`App is now listening on PORT ${PORT}`)
