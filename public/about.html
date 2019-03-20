@@ -128,7 +128,8 @@
                                 environment. User authorization and data access is achieved using JWT. The middleware, HelmetJS, has been implemented to
                                 add application security by setting secure HTTP headers and secure content policies, amongst others.
                                 To meet new technology requirements, D3 (JavaScript library) is being used to produce dynamic, 
-                                interactive data visualizations.  Custom NPM "scripts" can be found in Package.js.
+                                interactive data visualizations.  Custom NPM "scripts" can be found in Package.js, and API Endpoint Testing is 
+                                performed using Chai for Test Driven Development (from the terminal -> npm run windowstest)
                             </p>
                         </div>
                     </div>
@@ -150,11 +151,12 @@
                             <p> User restricted access / login required
                                 • Import CI data from CSV file containing the "department" and "owned_by_department" fields 
                                 used to filter on required data. The data model can be seen in the Development & Deployment section above
-                                • View CI records where there is a mismatch between owner department and CI billing department data 
+                                • View CI records where there is a mismatch between owning department and billing department data 
                                 • View Bar and Pie chart graphed CI data by "User", and by "Department"
                                 • Launch Service Now from the Dashboard to make CMBD updates, gather new CSV reports, etc
-                                • Add new Users, granting them access to the application
-                                • NPM scripts available for package management and cleanup              
+                                • Add new users to tha application via the User Profile page
+                                • NPM scripts available for package management and cleanup
+                                              
                             </p>
                         </div>
                     </div>

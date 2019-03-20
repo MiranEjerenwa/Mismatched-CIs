@@ -68,48 +68,49 @@ describe('GET /api/user', function () {
 
 
 
-// describe('POST /api/user', function () {
-//   beforeEach(function () {
-//     request = chai.request(server);
-//     return db.sequelize.sync({ force: true });
-//   });
+describe('POST /api/user', function () {
+  beforeEach(function () {
+    request = chai.request(server);
+    return db.sequelize.sync({ force: true });
+  });
 
-//   it('should save a new user', function (done) {
-//     var reqBody = {
-//       product_name: "Couch",
-//       department_name: "Furniture",
-//       price: 1899.00,
-//       stock_quantity : 16,
-//       product_sales: 0.00
-//     };
-//     console.log(reqBody);
+  it('should save a new user', function (done) {
+    var reqBody = {
+      fname: "Bob",
+      lname: "Hope",
+      email: "bob.hope@gmail.com",
+      password : "troops",
+      department: "Comedy",
+      Role: "Comedian"
+    };
+    console.log(reqBody);
 
-//     // POST the request body to the server
-//     request
-//       .post('/api/products')
-//       .send(reqBody)
-//       .end(function (err, res) {
-//         var responseStatus = res.status;
-//         var responseBody = res.body;
-//         console.log(`Response Status: ${responseStatus}`);
+    // POST the request body to the server
+    request
+      .post('/api/user')
+      .send(reqBody)
+      .end(function (err, res) {
+        var responseStatus = res.status;
+        var responseBody = res.body;
+        console.log(`Response Status: ${responseStatus}`);
         
-//         // Run assertions on the response
-//         expect(err).to.be.null;
+        // Run assertions on the response
+        expect(err).to.be.null;
 
-//         expect(responseStatus).to.equal(200);
+        expect(responseStatus).to.equal(200);
 
-//         expect(responseStatus).to.not.equal(400);
+        expect(responseStatus).to.not.equal(400);
 
-//         expect(responseBody).to.not.be.null;
+        expect(responseBody).to.not.be.null;
         
-//         expect(responseBody)
-//           .to.be.an('object')
-//           .that.includes(reqBody);
+        expect(responseBody)
+          .to.be.an('object')
+          .that.includes(reqBody);
 
-//         expect(responseBody).to.be.instanceof(Object);
+        expect(responseBody).to.be.instanceof(Object);
 
-//         // The `done` function is used to end any asynchronous tests
-//         done();
-//       });
-//   });
-// });
+        // The `done` function is used to end any asynchronous tests
+        done();
+      });
+  });
+});
