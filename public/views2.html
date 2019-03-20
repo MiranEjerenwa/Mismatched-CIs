@@ -28,30 +28,24 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <style>
-
 body {
   font: 10px sans-serif;
 }
-
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
 .bar {
   fill: orange;
 }
-
 .bar:hover {
   fill: orangered ;
 }
-
 .x.axis path {
   display: none;
 }
-
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -60,7 +54,6 @@ body {
   color: #fff;
   border-radius: 2px;
 }
-
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
@@ -73,7 +66,6 @@ body {
   position: absolute;
   text-align: center;
 }
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
@@ -164,141 +156,94 @@ body {
 
 
 <script>
-
 var margin = {top: 40, right: 20, bottom: 30, left: 250},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-
 var formatPercent = d3.format(".%");
-
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
-
 var y = d3.scale.linear()
     .range([height, 0]);
-
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
-
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .tickFormat(formatPercent);
-
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return "<strong>Frequency:</strong> <span style='color:red'>" + d.mode + "</span>";
   })
-
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 svg.call(tip);
-
-
 $.get('/api/Mismatched_CI').then(function(results) {
-
-  var deptObj = [];
-
-  var deptTotal = 0;
-
-  var added = false;
-
-  for(var i = 0; i < results.length; i++){
-
-    if(added == true){
-
-      var counted = false;
-
-      for(var j = 0; j < deptObj.length; j++){
- 
-        if(results[i].department == deptObj[j].department){
-
-          deptObj[j].mode = deptObj[j].mode + 1;
-
-          deptTotal++;
-
-          counted = true;
-          
-          console.log(results[i].department);
-        }
-
-      }
-
-      if(counted == false) {
-          
-          deptObj.push({department: results[i].department, mode: 1, frequency: 0});
-
-          deptTotal++;
-
-        }
-    
-
-    } else {
-
-      added = true;
-
-      deptObj.push({department: results[i].department, mode: 1, frequency: 0});
-
+var userObj =[];
+// var userObj = [];
+var deptTotal = 0;
+var added = false;
+for(var i = 0; i < results.length; i++){
+if(added == true){
+  var counted = false;
+  for(var j = 0; j < userObj.length; j++){
+    if(results[i].owned_by == userObj[j].owned_by){
+      userObj[j].mode = userObj[j].mode + 1;
+      deptTotal++;
+      counted = true;
+      
+      console.log(results[i].owned_by);
+    }
+  }
+  if(counted == false) {
+      
+      userObj.push({owned_by: results[i].owned_by, mode: 1, frequency: 0});
       deptTotal++;
     }
-
-  }
-
-  for(var k = 0; k < deptObj.length; k++){
-
-    deptObj[k].frequency = deptObj[k].mode/deptTotal;
-
-  }
-
-
-  console.log(deptObj);
-  console.log(deptTotal);
-
-
-  x.domain(deptObj.map(function(d) { return d.department; }));
-  
-  y.domain([0, d3.max(deptObj, function(d) { return d.mode; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
-
-  svg.selectAll(".bar")
-      .data(deptObj)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.department); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.mode); })
-      .attr("height", function(d) { return height - y(d.mode); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
-		});
+} else {
+  added = true;
+  userObj.push({owned_by: results[i].owned_by, mode: 1, frequency: 0});
+  deptTotal++;
+}
+}
+console.log(userObj);
+console.log(deptTotal);
+x.domain(userObj.map(function(d) { return d.owned_by; }));
+y.domain([0, d3.max(userObj, function(d) { return d.mode; })]);
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Frequency");
+svg.selectAll(".bar")
+    .data(userObj)
+  .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.owned_by); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.mode); })
+    .attr("height", function(d) { return height - y(d.mode); })
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide)
+      });
 // });
-
 function type(d) {
   d.frequency = +d.frequency;
   return d;
 }
-
 </script>
 
 
