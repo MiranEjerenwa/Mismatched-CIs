@@ -4,11 +4,12 @@
   "description": "This App will sort and display all mismatched CIs in the CMDB by business entity to eliminate misaligned charges.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha",
     "start": "node server.js",
     "watch": "nodemon server.js",
     "updates": "npm-check -u",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf node_modules",
+    "windowstest": "env NODE_ENV=test mocha"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
@@ -30,6 +33,7 @@
     "helmet": "^3.16.0",
     "jsonwebtoken": "^8.5.0",
     "lodash": "^4.17.11",
+    "mocha": "^6.0.2",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "node": "^11.11.0",

@@ -8,7 +8,7 @@ module.exports = function (connection, Sequelize) {
       autoIncrement: true
     },
 
-    fname: {
+     fname:{
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
@@ -33,9 +33,9 @@ module.exports = function (connection, Sequelize) {
     password: {
       type: Sequelize.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true
-      }
+      // validate: {
+      //   notEmpty: true
+      // }
     },
 
     department: {
@@ -54,7 +54,7 @@ module.exports = function (connection, Sequelize) {
 }
   );
 
-// // Associations to Recipe model
+// // Associations to Cidata model
 
 // User.associate = function(models) {
 //   User.hasMany(models.Cidata, {

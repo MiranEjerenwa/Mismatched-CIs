@@ -95,3 +95,5 @@ app.listen(PORT, function () {
     console.log(`App is now listening on PORT ${PORT}`)
 });
 
+//exports express instance and used by apiTest file for route testing. 
+module.exports = app;
