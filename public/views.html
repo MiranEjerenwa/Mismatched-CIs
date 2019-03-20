@@ -202,7 +202,8 @@ var svg = d3.select("body").append("svg")
 svg.call(tip);
 
 
-$.get('/api/Mismatched_CI').then(function(results) {
+$.get('/api/Mismatched_CI') 
+.then(function(results) {
 
   var deptObj = [];
 
@@ -255,9 +256,8 @@ $.get('/api/Mismatched_CI').then(function(results) {
 
     deptObj[k].frequency = deptObj[k].mode/deptTotal;
 
+		
   }
-
-
   console.log(deptObj);
   console.log(deptTotal);
 
