@@ -151,7 +151,8 @@ body {
 						</div>
 				</div>
 		</nav>
-
+    <div id='dashboard' style="margin-left: 40px;">
+    </div>
 		</body>
 
 
@@ -175,9 +176,9 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>Frequency:</strong> <span style='color:red'>" + d.mode + "</span>";
+    return "<strong>Mismatched Cis:</strong> <span style='color:red'>" + d.mode + "</span>";
   })
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#dashboard").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -227,7 +228,7 @@ svg.append("g")
     .attr("y", 6)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
-    .text("Frequency");
+    .text("No. Of Config Items");
 svg.selectAll(".bar")
     .data(userObj)
   .enter().append("rect")

@@ -15,7 +15,6 @@ $(function () {
 		$.get('/api/Mismatched_CI').then(render);
 	}
 	const renderItemRow = function (item) {
-		// if (item.owned_by_department !== item.department) {
 		const tr = $('<tr>'); 
 		
 		//appending items to the div(Items should be the name of the table)
@@ -29,23 +28,11 @@ $(function () {
 				$('<td>').text(item.owned_by),
 				$('<td>').text(item.owned_by_company),
 				$('<td>').text(item.owned_by_department)
+				// preventing email from being displayed
 				// $('<td>').text(item.email)
 			);
 			return tr;
-		// } 
 	}
-
 	getItems();
 });
-	
-	// $.post('/api/user', function(data) {
-	// 	$("#userPost").on("click", function(evt){
-	// 		evt.preventDefault();    
-	// 		$.ajax({
-	// 		  method: "POST",
-	// 		  url: "/api/user",
-	// 			});
-	// 		},
-	// 	console.log(data)
-	// 	)
-	// })
+
