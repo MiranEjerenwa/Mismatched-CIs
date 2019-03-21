@@ -20,7 +20,7 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 60px;
   text-align: center;
-  padding-top:180px;
+  padding-top:140px;
   line-height: 100px;
 }
 
@@ -31,8 +31,6 @@
 }
 
 .paralsec1 {
-  /* background-image: url("https://blog.trueaccord.com/wp-content/uploads/2017/07/shutterstock_124758646-copy.jpg");  */
-  /* background-image: url("https://www.chillies.co.za/images/news/Two%20line%20of%20code%20are%20about%20to%20upend%20a%20%2420%20billion%20Industry.jpg?404=/News/Web/crop_2013102010513.jpg?width=412"); */
   background-image: url("https://www.delphix.com/sites/default/files/styles/1920x1080/public/2018-11/istock-924652302.jpg?itok=0d6dc9gN");  
 }
 
@@ -62,11 +60,7 @@
 }
 
 .paralsec2 {
-  /* background-image: url("https://www.gecapital.com/sites/default/files/2018-09/GEC_home01.jpg"); */
   background-image: url("https://www.gecapital.com/sites/default/files/2018-09/GEC_home01.jpg");
-  
-  /* background-image: url("https://blog.trueaccord.com/wp-content/uploads/2017/07/shutterstock_124758646-copy.jpg"); */
-  
 }
 
 .paralsec2 p {
@@ -100,7 +94,6 @@
 }
 
 #team {
-  /* background: url("https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/1546620059/new-york-style-cheesecake-with-pink-grapefruit-and-marmalade-xl-RECIPE0219.jpg?itok=mTzLYoHf") no-repeat center center fixed; */
   padding: 60px 0;
   text-align: center;
   background-size: cover;
@@ -211,8 +204,6 @@
       width: 50;
       }
   }
-
-/* Sized for screens up to 450 pxels. */
 
 /* Sized for screens up to 450 pxels. */
 @media screen and (max-width: 450px) {
